@@ -185,8 +185,6 @@ celerybeat-schedule
 
 .venv
 
-env/
-
 venv/
 
 ENV/
