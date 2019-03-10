@@ -20,11 +20,10 @@
           <div class="col-lg-8">
             <h2 class="h3">로마는 하루 아침에 이루어지지 않았다.</h2>
             <p class="text-big">힘이나 지능이 아닌 <strong>끈질긴 노력</strong>이 우리의 잠재력을 해방시켜주는 열쇠다. </p>
-            <p class="text-big">시대의 흐름을 따라가지 못하는 사람은 바로 여명이 오는데도 촛불에 의지하고 있는 것이다... </p>
           </div>
         </div>
       </div>
-    </section>
+    </section> 
     <section class="featured-posts no-padding-top">
       <div class="container">
         <!-- Post-->
@@ -63,12 +62,12 @@
         {% endfor %}
       </div>
     </section>
-    <!-- Divider Section-->
+     <!-- Divider Section-->
     <section style="background: url({% static 'img/divider-bg.jpg' %}); background-size: cover; background-position: center bottom" class="divider">
       <div class="container">
         <div class="row">
           <div class="col-md-7">
-            <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</h2><a href="#" class="hero-link">View More</a>
+           <h2 class="h3">Latest from the blog</h2>
           </div>
         </div>
       </div>
@@ -76,10 +75,10 @@
     <!-- Latest Posts -->
     <section class="latest-posts"> 
       <div class="container">
-        <header> 
+         {% comment %} <header> 
           <h2>Latest from the blog</h2>
-          <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-        </header>
+          <p class="text-big"></p>
+        </header> {% endcomment %}
         <div class="row">
           {% for obj in latest %}
           <div class="post col-md-4">
