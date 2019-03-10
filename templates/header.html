@@ -36,6 +36,13 @@
               <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Create</a>
               </li>
               {% endif %}
+              {% if user.is_authenticated %}
+              <li class="nav-item"><a href="{% url 'users:logout' %}" class="nav-link ">logout</a>
+              </li>
+              {% else %}
+               <li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link ">login</a>
+               </li>         
+              {% endif %}  
             </ul>
             <div class="navbar-text"><a href="#" class="search-btn"><i class="icon-search-1"></i></a></div>
             {% comment %} <ul class="langs navbar-text"><a href="#" class="active">EN</a><span>           </span><a href="#">ES</a></ul> {% endcomment %}
