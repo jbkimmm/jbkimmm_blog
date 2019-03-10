@@ -765,7 +765,7 @@ section.featured-posts .post-footer {
     -webkit-box-ordinal-group: 2;
     -ms-flex-order: 1;
     order: 1;
-    max-height: 300px;
+    max-height: 320px;
     min-height: auto !important;
   }
   section.featured-posts .image img {
