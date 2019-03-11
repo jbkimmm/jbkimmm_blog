@@ -2,6 +2,8 @@ from tinymce import HTMLField
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse
+from users.models import UserProfile
+from django.contrib.auth.models import User
 
 User = get_user_model()
 
@@ -26,7 +28,7 @@ class Post(models.Model):
     content = HTMLField()
     comment_count = models.IntegerField(default = 0)
     view_count = models.IntegerField(default = 0)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     thumbnail = models.ImageField(blank=True)
     categories = models.ManyToManyField(Category)
     featured = models.BooleanField()

@@ -1,13 +1,14 @@
 from django.db.models import Count, Q
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404, redirect, reverse
+from django.contrib.auth.models import User
 from .forms import CommentForm, PostForm
 from .models import Post, Author
 from marketing.models import Signup
 
 
-def get_author(user):
-    qs = Author.objects.filter(user=user)
+def get_user(userr):
+    qs = User.objects.filter(username=userr)
     if qs.exists():
         return qs[0]
     return None
@@ -97,10 +98,10 @@ def post(request, id):
 def post_create(request):
     title = 'Create'
     form = PostForm(request.POST or None, request.FILES or None)
-    author = get_author(request.user)
+    userr = get_user(request.user)
     if request.method == "POST":
         if form.is_valid():
-            form.instance.author = author
+            form.instance.user = userr
             form.save()
             return redirect(reverse("post-detail", kwargs={
                 'id': form.instance.id
