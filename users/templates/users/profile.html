@@ -1,35 +1,41 @@
 {% extends "../base.html" %}
+{% load static %}
 {% load crispy_forms_tags %}
 {% block content %}
-    <div class="content-section">
-     <legend class="border-bottom mb-4">Profile Info</legend>
-      <div class="col-md-2">
-        <div class="media">
-          <img class="rounded-circle account-img" src="{{ user.userprofile.image.url }}" width="200" height="200">
-          &nbsp;&nbsp;&nbsp;{{ obj.user }}
-        </div>
-      {% comment %} <div class="col-md-2">
-        <h2 class="account-heading">{{ user }}</h2>
-      </div> {% endcomment %}
-      
-      <div class="col-md-8">  
-        <div class="media-body">
-          <p class="text-secondary">{{ description }}</p>
-          <p class="text-secondary">{{ city }}</p>
-          <p class="text-secondary">{{ website }}</p>
-          <p class="text-secondary">{{ phone }}</p>   
-        </div>
-        </div>
-       </div>
-      <form method="POST" enctype="multipart/form-data">
-          {% csrf_token %}
-          <fieldset class="form-group">
-              {{ u_form|crispy }}
-              {{ p_form|crispy }}
-          </fieldset>
-          <div class="form-group">
-              <button class="btn btn-outline-info" type="submit">Update</button>
-          </div>
-      </form>
+<div class="container">
+  <div class="row">
+      <main class="post blog-post col-lg-8"> 
+          <legend class="border-bottom mb-2">Profile Info</legend>
+          <div class="container">
+              <div class="post-single">
+                <div class="col-md-6">
+                    <br><br>
+                    <h2 class="account-heading">User Name : &nbsp;&nbsp;{{ user }}</h2>
+                    <br><br>
+                    <div class="media">
+                      <h2 class="account-heading">Image  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; : &nbsp;&nbsp;
+                      {% if user.userprofile.image %}
+                      <img class="rounded-circle account-img" src="{{ user.userprofile.image.url }}" width="100" height="100"></h2>
+                      {% else %}
+                        </h2>
+                      {% endif %}
+                    </div>
+                </div>
+                <div class="col-md-4">  
+                  <div class="media-body">
+                    <br><br><br>
+                    <h2 class="account-heading">Description : &nbsp;&nbsp;{{ description }}</h2>
+                    <h2 class="account-heading">Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;{{ phone }}</h2>
+                  </div>
+                  <div class="border-top pt-8">
+                      <small class="text-muted">
+                          Profile을 변경하시겠습니까? <a class="ml-2" href="{% url 'users:edit_profile' %}">변경</a>
+                      </small>
+                  </div>
+              </div>
+            </div>
+      </main>
     </div>
+  </div>
+
 {% endblock content %}

@@ -37,10 +37,12 @@
               </li>
               {% endif %}
               {% if user.is_authenticated %}
-              <li class="nav-item"><a href="{% url 'users:logout' %}" class="nav-link ">logout</a>
+              <li class="nav-item"><a href="{% url 'users:profile' %}" class="nav-link ">Profile</a>
+              <li class="nav-item"><a href="{% url 'users:logout' %}" class="nav-link ">Logout</a>
               </li>
               {% else %}
-               <li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link ">login</a>
+               <li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link ">Login</a>
+               <li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link ">사용자등록</a>
                </li>         
               {% endif %}  
             </ul>

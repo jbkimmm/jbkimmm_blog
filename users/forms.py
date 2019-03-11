@@ -22,10 +22,7 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['image',
-            'city',
-            'website',
-            'phone',
+        fields = ['description',  'phone','image',  
         ]
 
 class RegistrationForm(UserCreationForm):
@@ -50,18 +47,14 @@ class RegistrationForm(UserCreationForm):
             user.save()
         return user
 
-class EditProfileForm(UserChangeForm):
-    template_name='/something/else'
-    email = forms.EmailField(required=True)
-    # description = forms.TextInput()
-    # phone = forms.CharField()
-    # city = forms.CharField()
-    class Meta:
-        model = User
-        fields = (
-            'first_name',
-            'email',
-            # 'city',
-            # 'website',
-            # 'phone',
-            )
+# class EditProfileForm(UserChangeForm):
+#     template_name='/something/else'
+#     email = forms.EmailField(required=True)
+#     phone = forms.CharField()
+
+#     class Meta:
+#         model = UserProfile
+#         fields = (
+#             'email',
+#             'phone',
+#             )
