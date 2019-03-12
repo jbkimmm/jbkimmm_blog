@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -9,6 +9,12 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm, RegistrationForm
 from .models import UserProfile
+
+def get_user(userr):
+    qs = User.objects.filter(username=userr)
+    if qs.exists():
+        return qs[0]
+    return None
 
 def register(request):
     if request.method =='POST':
@@ -49,6 +55,8 @@ def edit_profile(request):
         p_form = ProfileUpdateForm(request.POST,
                                    request.FILES,
                                    instance=request.user.userprofile)
+
+        print(request.user.userprofile.phone)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
             p_form.save()
@@ -56,6 +64,7 @@ def edit_profile(request):
             return redirect('users:profile')
 
     else:
+        print("============edit_profile start")
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.userprofile)
 
@@ -64,7 +73,7 @@ def edit_profile(request):
         'p_form': p_form
     }
 
-    return render(request, 'users/profile.html', context)
+    return render(request, 'users/edit_profile.html', context)
 
 def change_password(request):
     if request.method == 'POST':

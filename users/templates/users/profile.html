@@ -8,8 +8,9 @@
           <legend class="border-bottom mb-2">Profile Info</legend>
           <div class="container">
               <div class="post-single">
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <br><br>
+                    <medium class="text-muted">
                     <h2 class="account-heading">User Name : &nbsp;&nbsp;{{ user }}</h2>
                     <br><br>
                     <div class="media">
@@ -20,14 +21,19 @@
                         </h2>
                       {% endif %}
                     </div>
+                  </medium>
                 </div>
-                <div class="col-md-4">  
+                <div class="col-md-10">  
                   <div class="media-body">
                     <br><br><br>
-                    <h2 class="account-heading">Description : &nbsp;&nbsp;{{ description }}</h2>
-                    <h2 class="account-heading">Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;{{ phone }}</h2>
+                    <medium class="text-muted">
+                        <h2 class="account-heading">E-mail&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: &nbsp;&nbsp;{{ user.email  }}</h2>
+                    <h2 class="account-heading">Description : &nbsp;&nbsp;{{ obj.description  }}</h2>
+                    <h2 class="account-heading">Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp; {{ obj.phone }}</h2>
+                  </medium>
                   </div>
-                  <div class="border-top pt-8">
+               
+                  <div class="border-top mb-2">
                       <small class="text-muted">
                           Profile을 변경하시겠습니까? <a class="ml-2" href="{% url 'users:edit_profile' %}">변경</a>
                       </small>
