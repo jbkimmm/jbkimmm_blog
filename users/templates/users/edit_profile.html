@@ -17,7 +17,7 @@
 {% block content %}
     <div class="content-section">
         <div class="col-4 offset-1 mb-5 mt-5">
-            <form method="POST">
+            <form method="POST" enctype="multipart/form-data" action=""  id="userprofile_form">
                 {% csrf_token %}
                 <fieldset class="form-group">
                     <legend class="border-bottom mb-4">프로파일 수정</legend>
@@ -28,11 +28,6 @@
                     <button class="btn btn-outline-info" type="submit">저장</button>
                 </div>
             </form>
-            <!-- <div class="border-top pt-3">
-                <small class="text-muted">
-                    이미 등록한 사용자입니까? <a class="ml-2" href="#">등록</a>
-                </small>
-            </div> -->
         </div>
     </div>
 {% endblock content %}

@@ -50,12 +50,16 @@ def view_profile(request, user=None):
 
 @login_required
 def edit_profile(request):
+    userprofile = get_object_or_404(UserProfile, user=request.user)
+    print(request)
+    print(userprofile)
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
-        p_form = ProfileUpdateForm(request.POST,
-                                   request.FILES,
+        p_form = ProfileUpdateForm(request.POST or None,
+                                   request.FILES or None,
                                    instance=request.user.userprofile)
-
+                                    
+        print(p_form)
         print(request.user.userprofile.phone)
         if u_form.is_valid() and p_form.is_valid():
             u_form.save()
@@ -67,6 +71,7 @@ def edit_profile(request):
         print("============edit_profile start")
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.userprofile)
+        print(p_form)
 
     context = {
         'u_form': u_form,
