@@ -121,7 +121,7 @@ def post_update(request, id):
         request.POST or None, 
         request.FILES or None, 
         instance=post)
-    author = get_author(request.user)
+    author = get_user(request.user)
     if request.method == "POST":
         if form.is_valid():
             form.instance.author = author

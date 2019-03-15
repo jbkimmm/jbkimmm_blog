@@ -30,12 +30,18 @@
               </li>
               <li class="nav-item"><a href="/blog" class="nav-link active ">Blog</a>
               </li>
-              <li class="nav-item"><a href="#" class="nav-link ">Contact</a>
+              <!-- {% if request.user.is_staff %} -->
+              <!-- <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Create</a> -->
               </li>
-              {% if request.user.is_staff %}
-              <li class="nav-item"><a href="{% url 'post-create' %}" class="nav-link ">Create</a>
-              </li>
-              {% endif %}
+              <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Posting
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="{% url 'post-create' %}">Create</a>
+                  </div>
+                </li>
+              <!-- {% endif %} -->
               {% if user.is_authenticated %}
               <li class="nav-item"><a href="{% url 'users:profile' %}" class="nav-link ">Profile</a>
               <li class="nav-item"><a href="{% url 'users:logout' %}" class="nav-link ">Logout</a>
@@ -43,6 +49,8 @@
               {% else %}
                <li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link ">Login</a>
                <li class="nav-item"><a href="{% url 'users:login' %}" class="nav-link ">사용자등록</a>
+               <li class="nav-item"><a href="#" class="nav-link ">Contact</a>
+                </li>
                </li>         
               {% endif %}  
             </ul>
