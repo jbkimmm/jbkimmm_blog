@@ -55,7 +55,7 @@ def index(request):
 def blog(request):
     category_count = get_category_count()
     most_recent = Post.objects.order_by('-timestamp')[:3]
-    post_list = Post.objects.all()
+    post_list= Post.objects.all()
     paginator = Paginator(post_list, 4)
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -67,6 +67,7 @@ def blog(request):
         paginated_queryset = paginator.page(paginator.num_pages)
 
     context = {
+        'post_list' : post_list,
         'queryset': paginated_queryset,
         'most_recent': most_recent,
         'page_request_var': page_request_var,

@@ -49,7 +49,7 @@
                 </header>
                 <p>{{ obj.overview|linebreaks|truncatechars:200 }}</p>
                 <footer class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{{ obj.author.profile_picture.url }}" alt="..." class="img-fluid"></div>
+                    <div class="avatar"><img src="{{ obj.user.userprofile.image.url }}" alt="..." class="img-fluid"></div>
                     <div class="title"><span>{{ obj.author }}</span></div></a>
                   <div class="date"><i class="icon-clock"></i> {{ obj.timestamp|timesince }} ago</div>
                   <div class="comments"><i class="icon-comment"></i>{{ obj.comment_count }}</div>
@@ -86,9 +86,9 @@
         <div class="row">
           {% for obj in latest %}
           <div class="post col-md-4">
-            {% if obj.thumbnail %}
-            <div class="post-thumbnail"><a href="#"><img src="{{ obj.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
-            {% endif %}
+              {% if obj.thumbnail %}
+              <div class="post-thumbnail"><a href="#"><img src="{{ obj.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
+              {% endif %}
             <div class="post-details">
               <div class="post-meta d-flex justify-content-between">
                 <div class="date">{{ obj.timestamp }}</div>
@@ -99,7 +99,7 @@
                   </div>
               </div><a href="{{ obj.get_absolute_url }}"> 
                 <h3 class="h4">{{ obj.title }}</h3></a>
-              <p class="text-muted">{{ obj.overview }}</p>
+              <p class="text-muted">{{ obj.overview|linebreaks|truncatechars:200  }}</p>
             </div>
           </div>
           {% endfor %}

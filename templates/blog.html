@@ -9,15 +9,15 @@
         <main class="posts-listing col-lg-8"> 
           <div class="container">
             <div class="row">
-              <!-- post -->
+             <!-- post-->
               {% for post in queryset %}
               <div class="post col-xl-6">
-                {% if post.thumnail %}
-                  <div class="post-thumbnail"><a href="{{ post.get_absolute_url }}"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
+                {% if post.thumbnail %}
+                <div class="post-thumbnail"><a href="{{ post.get_absolute_url }}"><img src="{{ post.thumbnail.url }}" alt="..." class="img-fluid"></a></div>
                 {% endif %}
                <div class="post-details">
                   <div class="post-meta d-flex justify-content-between">
-                    {% comment %} <div class="date meta-last">20 May | 2016</div> {% endcomment %}
+                    {% comment %} <div class="date meta-last">20 May | 2019</div> {% endcomment %}
                     <div class="category">
                     {% for cat in post.categories.all %}
                     <a href="#">{{ cat }}</a>
@@ -29,7 +29,7 @@
                   <footer class="post-footer d-flex align-items-center">
                     <a href="#" class="author d-flex align-items-center flex-wrap">
                       <div class="avatar"><img src="{{ post.user.userprofile.image.url }}" alt="..." class="img-fluid"></div>
-                      <div class="title"><span>{{ post.author.user.username }}</span></div>
+                      <div class="title"><span>{{ post.user }}</span></div>
                     </a>
                     <div class="date"><i class="icon-clock"></i>{{ post.timestamp|timesince }} ago</div>
                     <div class="comments meta-last"><i class="icon-comment"></i>{{ post.comment_count }}</div>
@@ -37,10 +37,11 @@
                 </div>
               </div>
               {% endfor %}
-            </div>
+          </div>
             <!-- Pagination -->
             <nav aria-label="Page navigation example">
               <ul class="pagination pagination-template d-flex justify-content-center">
+               
                 {% if queryset.has_previous %}                
                 <li class="page-item"><a href="?{{ page_request_var }}={{ queryset.previous_page_number }}" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
                 {% endif %}
