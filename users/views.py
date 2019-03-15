@@ -31,11 +31,7 @@ def register(request):
 
 @login_required
 def profile(request, user=None):
-    if user:
-        obj = UserProfile.objects.get(user=request.user)
-    else:
-        #user = request.user
-        obj = UserProfile.objects.get(user=request.user)
+    obj = UserProfile.objects.get(user=request.user)
     args = {'obj': obj}
     return render(request, 'users/profile.html', args)
 

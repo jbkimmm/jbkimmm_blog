@@ -32,7 +32,7 @@
                 </div>
                 <h1>{{ post.title }}<a href="{{ post.get_absolute_url }}"><i class="fa fa-bookmark-o"></i></a></h1>
                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
-                    <div class="avatar"><img src="{{ post.user.profile_picture.url }}" alt="..." class="img-fluid"></div>
+                    <div class="avatar"><img src="{{ post.user.userprofile.image.url }}" alt="..." class="img-fluid"></div>
                     <div class="title"><span>{{ post.user.username }}</span></div></a>
                   <div class="d-flex align-items-center flex-wrap">       
                     <div class="date"><i class="icon-clock"></i> {{ post.timestamp|timesince }} ago</div>
