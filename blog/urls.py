@@ -18,6 +18,7 @@ urlpatterns = [
     path('post/<id>/delete/', post_delete, name='post-delete'),
     path('tinymce/', include('tinymce.urls')),
     path('profile/', include('users.urls', namespace='users')),
+    path('autopost/', include('autopost.urls', namespace='autopost')),
 ]
 
 if settings.DEBUG:

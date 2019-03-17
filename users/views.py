@@ -47,8 +47,7 @@ def view_profile(request, user=None):
 @login_required
 def edit_profile(request):
     userprofile = get_object_or_404(UserProfile, user=request.user)
-    print(request)
-    print(userprofile)
+ 
     if request.method == 'POST':
         u_form = UserUpdateForm(request.POST, instance=request.user)
         p_form = ProfileUpdateForm(request.POST or None,

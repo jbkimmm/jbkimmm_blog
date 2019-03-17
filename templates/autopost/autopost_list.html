@@ -1,0 +1,45 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+  .post-body img {
+    width: 100%;
+  }
+</style>
+
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="post blog-post col-lg-10"> 
+          {% comment %} <div class="container"> {% endcomment %}
+            <div class="row">
+              <legend class="border-bottom mb-2 col">Auto post URL List </legend>
+              <div class="col text-right">
+                  <a href="{% url 'autopost:autopost-create' %}">Auto URL Create</a>
+              </div>
+                
+            </div>
+            {% for list in obj%}
+            <div class="row">
+                  <div class="post-meta d-flex col">
+                    <div>  <a href="{{ list.get_absolute_url }}">{{ list.id }}</a>&nbsp;&nbsp;&nbsp;
+                            <a href="{{ list.get_absolute_url }}">{{ list.title }}</a>&nbsp;&nbsp;&nbsp;
+                           <a href="{{ list.get_absolute_url }}">{{ list.posturl }}</a>
+                    </div>
+                    <div class="col text-right">
+                      <a href="{% url 'autopost:autopost-crawl-test' id=list.id %}">Testcrawl</a>&nbsp;
+                      <a href="{% url 'autopost:autopost-crawl' id=list.id %}">Autocrawl</a>&nbsp;
+                      <a href="{% url 'autopost:autopost-update' id=list.id %}">Update</a>&nbsp;
+                      <a href="{% url 'autopost:autopost-delete' id=list.id %}">Delete</a>&nbsp;
+                    </div>
+                  </div>
+            </div>
+            {% endfor %}
+        </main>
+        {% comment %} {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}         {% endcomment %}
+      </div>
+    </div>
+{% endblock content %}
+            

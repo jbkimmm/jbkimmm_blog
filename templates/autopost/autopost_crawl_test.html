@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="posts-listing col-lg-10"> 
+          <div class="container">
+            <div class="row">
+                <div class="post col-xl-10">
+                <legend class="border-bottom mb-2 col">Auto post Crawl Test&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                  </legend>
+                  <div class="col text-right">
+                    <a href="{% url 'autopost:autopost-list' %}"><h6>목록</h6></a>
+                  </div>
+                
+                <div class="post-details">
+                    <div class="post-meta d-flex justify-content-between col">
+                    <div> {{ autopost.id }}</a>&nbsp;&nbsp;&nbsp;
+                           {{ autopost.posturl }}
+                           {% comment %} <h4> {{data}}</h4> {% endcomment %}
+                    </div>
+                </div>
+             </div>
+             <div class="row">
+                <div class="post-details">
+                  {% comment %} <div class="post col-xl-10"> {% endcomment %}
+                    <div class="post-meta d-flex justify-content-between">
+                      {{ data }}
+                      {% comment %} {% for title in data %}
+                      {{ title }}
+                      {% endfor %} {% endcomment %}
+                    </div>
+                  {% comment %} </div> {% endcomment %}
+                </div>
+             </div>  
+           </div>
+        </main>
+        {% comment %} {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %} {% endcomment %}
+      </div>
+    </div>
+
+{% endblock content %}

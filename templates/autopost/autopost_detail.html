@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <div class="container">
+      <div class="row">
+        <!-- Latest Posts -->
+        <main class="posts-listing col-lg-8"> 
+          <div class="container">
+            <div class="row">
+                <div class="post col-xl-8">
+                <legend class="border-bottom mb-2 col">Auto post URL Detail </legend>
+                <div class="post-details">
+                    <div class="post-meta d-flex justify-content-between col">
+                     <div>
+                        <table>
+                        <tr><td>{{ autopost.id }}&nbsp;&nbsp
+                            {{ autopost.title }}</td></tr>
+                            <tr><td> {{ autopost.posturl }}</td></tr>
+                                <tr><td>{{ autopost.selection }}</td></tr>
+                                <tr><td>{{ autopost.gettag }}</td></tr>
+                        </table>
+                    </div>
+                    <div class="col text-right">
+                        <a href="{% url 'autopost:autopost-crawl' autopost.id %}">Autocrawl</a>&nbsp;
+                        <a href="{% url 'autopost:autopost-update' id=autopost.id %}">Update</a>
+                        <a href="{% url 'autopost:autopost-delete' id=autopost.id %}">Delete</a>
+                    </div>
+                </div>
+           </div>
+        </main>
+        {% include 'sidebar.html' with most_recent=most_recent category_count=category_count %}
+      </div>
+    </div>
+
+{% endblock content %}

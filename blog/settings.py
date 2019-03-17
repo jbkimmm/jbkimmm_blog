@@ -32,6 +32,7 @@ INSTALLED_APPS = [
     'marketing',
     'posts',
     'users',
+    'autopost'
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

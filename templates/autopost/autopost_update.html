@@ -1,0 +1,20 @@
+{% extends "../base.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="content-section">
+        <div class="col-4 offset-1 mb-5 mt-5">
+            <form method="POST" enctype="multipart/form-data" action=""  id="userprofile_form">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    <legend class="border-bottom mb-4">Auto Posting URL 수정</legend>
+                    {{ form|crispy }}
+                </fieldset>
+                <div class="form-group">
+                    <button class="btn btn-outline-info" type="submit">저장</button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
