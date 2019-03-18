@@ -10,7 +10,7 @@ def autopost_crawling(request):
 
 def autopost_crawl_test(request, id):
     autopost = get_object_or_404(Autopost, id=id)
-    data = testautocrawl(autopost.posturl, autopost.selection, autopost.gettag)
+    data = testautocrawl(autopost.siteurl,autopost.posturl, autopost.selection, autopost.gettag)
     context = {
         'data': data,
         'autopost': autopost,

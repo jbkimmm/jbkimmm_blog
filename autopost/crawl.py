@@ -2,8 +2,8 @@ import requests
 from bs4 import BeautifulSoup
 # from .models import Autopost
 
-def testautocrawl(url, selection, gettag):
-    print(url)
+def testautocrawl(siteurl, url, selection, gettag):
+    print("=====================================")
     headers={
         'Referer' : url,
         'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36',
@@ -18,9 +18,14 @@ def testautocrawl(url, selection, gettag):
     my_titles = soup.select( selection )
 
     for title in my_titles:
-        real_link=title.get(gettag)
-        print(real_link)
-        data.append(real_link)
+        real_link_type=title.get(gettag)
+        real_link=str(real_link_type)
+        i=real_link.find(siteurl)
+        if i==-1:
+            data.append(siteurl+real_link)
+            print(real_link)
+        else:
+            data.append(real_link)
 
     # for link in sel_data:
     #     title = link.string
