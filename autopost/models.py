@@ -8,11 +8,14 @@ from django.contrib.auth.models import User
 class Autopost(models.Model):
     id=models.IntegerField(primary_key=True, auto_created=True)
     title=models.CharField(max_length=200,default=None)
+    siteurl = models.CharField(max_length=100, null=True, blank=True, default=None)
     posturl = models.CharField(max_length=200,default=None)
     selection =models.CharField(max_length=100,default=None)
     gettag = models.CharField(max_length=100,default=None)
     def __str__(self):
         return self.posturl
+
+
 
     def get_absolute_url(self):
         return reverse('autopost:autopost-detail', kwargs={

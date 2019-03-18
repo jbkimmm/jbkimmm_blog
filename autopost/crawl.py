@@ -1,30 +1,41 @@
 import requests
 from bs4 import BeautifulSoup
-from .models import Autopost
+# from .models import Autopost
 
 def testautocrawl(url, selection, gettag):
-    data = []
+    print(url)
     headers={
         'Referer' : url,
         'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/72.0.3626.121 Safari/537.36',
     }
-    html = requests.get(url, headers=headers).text
-    # html = req.text
+    req = requests.get(url, headers=headers)
+    html = req.text
     
     soup = BeautifulSoup(html, 'html.parser')
     print(selection)
-    subjects=[]
-    # sel_data = soup.select(
-    #         selection
-    #         )
+  
+    data=[]
+    my_titles = soup.select( selection )
+
+    for title in my_titles:
+        real_link=title.get(gettag)
+        print(real_link)
+        data.append(real_link)
+
+    # for link in sel_data:
+    #     title = link.string
+    #     real_link=link.get(gettag)
+    #     subject[title]=real_link
+    
+    # findall 방식
     # divs =soup.findall('div', {})
     # for div in divs:
     #     links=div.findall('a')
     #     for link in links:
     #         subject = link.text
     #         subjects.append(subject)
-    return html
-
+    
+    return data
 def autocrawl(url, selection, gettag):
  
     data = []

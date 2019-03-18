@@ -10,19 +10,21 @@
           <div class="container">
             <div class="row">
                 <div class="post col-xl-8">
-                <legend class="border-bottom mb-2 col">Auto post URL Detail </legend>
+                <legend class="border-bottom mb-8 col">Auto post URL Detail </legend>
                 <div class="post-details">
                     <div class="post-meta d-flex justify-content-between col">
                      <div>
                         <table>
                         <tr><td>{{ autopost.id }}&nbsp;&nbsp
                             {{ autopost.title }}</td></tr>
-                            <tr><td> {{ autopost.posturl }}</td></tr>
+                                <tr><td> {{ autopost.siteurl }}</td></tr>
+                                <tr><td> {{ autopost.posturl }}</td></tr>
                                 <tr><td>{{ autopost.selection }}</td></tr>
                                 <tr><td>{{ autopost.gettag }}</td></tr>
                         </table>
                     </div>
                     <div class="col text-right">
+                        <a href="{% url 'autopost:autopost-crawl-test' autopost.id %}">Testcrawl</a>&nbsp;
                         <a href="{% url 'autopost:autopost-crawl' autopost.id %}">Autocrawl</a>&nbsp;
                         <a href="{% url 'autopost:autopost-update' id=autopost.id %}">Update</a>
                         <a href="{% url 'autopost:autopost-delete' id=autopost.id %}">Delete</a>
