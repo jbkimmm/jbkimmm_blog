@@ -52,6 +52,12 @@ def index(request):
     }
     return render(request, 'index.html', context)
 
+def camp_map(request):
+    # featured = Post.objects.filter(featured=False)
+    # latest = Post.objects.order_by('-timestamp')[0:3]
+
+   return render(request, 'campmap/campmap.html')
+
 def blog(request):
     category_count = get_category_count()
     most_recent = Post.objects.order_by('-timestamp')[:3]

@@ -4,12 +4,13 @@ from django.contrib import admin
 from django.urls import path, include
 
 from posts.views import (
-    index, blog, post, search, 
+    index, camp_map, blog, post, search, 
     post_create, post_update, post_delete)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', index, name='home'),
+    path('campmap/', camp_map, name='camp-map'),
     path('blog/', blog, name='post-list'),
     path('search/', search, name='search'),
     path('create/', post_create, name='post-create'),
